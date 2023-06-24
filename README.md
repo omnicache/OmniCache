@@ -49,6 +49,7 @@ public async Task<List<StoreStock>> GetMovieStock(Category category)
 {
     List<Movie> movies = await cachedDB.GetMultipleAsync(movieQuery, category);
     List<StoreStock> stock = await cachedDB.GetMultipleAsync(stockQuery, movies.Select(m=>m.Id).ToList());
+		return stock
 }
 ```
 
@@ -104,6 +105,9 @@ If you're willing to debug any issues then go for it! I'm hoping to iron out all
 
 ### I'm not sure I understand how this works
 Take a look at the demos inside. They will demonstrate how queries are made against the cache and database.
+
+### What else is there to do?
+Currently working on making less trips to the cache. In future will look at making it work with transactions.
 
 
 ## Contact
