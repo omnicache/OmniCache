@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>OmniCache.EntityFramework</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Chun Lim</Authors>    
     <Product>OmniCache.EntityFramework</Product>
     <Description>A caching library to cache everything for EntityFramework</Description>   

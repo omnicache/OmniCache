@@ -19,6 +19,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# nuget packages
+*.nupkg
+
 # .NET Core
 project.lock.json
 .project.json.user
