@@ -49,7 +49,7 @@ public async Task<List<StoreStock>> GetMovieStock(Category category)
 {
     List<Movie> movies = await cachedDB.GetMultipleAsync(movieQuery, category);
     List<StoreStock> stock = await cachedDB.GetMultipleAsync(stockQuery, movies.Select(m=>m.Id).ToList());
-		return stock
+    return stock
 }
 ```
 
