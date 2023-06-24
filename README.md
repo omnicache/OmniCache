@@ -103,6 +103,9 @@ I would suggest using the library for APIs/websites/services that you want to sc
 ### Is this production ready?
 If you're willing to debug any issues then go for it! I'm hoping to iron out all the bugs while developing future projects.
 
+### Can I only use the cache for certain objects?
+Yes, you decide what you want to cache and not cache. If you want to make queries that uses a lot of joins you can do so using EntityFramework. The only condition is that any object/table you want to cache has to have updates and inserts via this library.
+
 ### I'm not sure I understand how this works
 Take a look at the demos inside. They will demonstrate how queries are made against the cache and database.
 
