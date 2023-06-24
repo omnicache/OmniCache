@@ -100,7 +100,7 @@ I would suggest using the library for APIs/websites/services that you want to sc
 - Your application has strict consistency requirements and cannot tolerate any inconsistency between the cache and the database. There's always a small window between when data is updated and when the cache is invalidated and updated where stale data may be served.
 
 ### Is this production ready?
-If you're willing to debug any issues that go for it! I'm hoping to iron out all the bugs while developing future projects.
+If you're willing to debug any issues then go for it! I'm hoping to iron out all the bugs while developing future projects.
 
 ### I'm not sure I understand how this works
 Take a look at the demos inside. They will demonstrate how queries are made against the cache and database.

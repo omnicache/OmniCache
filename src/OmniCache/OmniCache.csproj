@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>OmniCache</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Chun Lim</Authors>    
     <Product>OmniCache</Product>
     <Description>A caching library to cache everything</Description>    
@@ -15,7 +15,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
     <PackageLicenseExpression>MIT</PackageLicenseExpression>    
     <PackageReadmeFile>README.md</PackageReadmeFile>
-
+    <PackageProjectUrl>https://github.com/omnicache/OmniCache</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/omnicache/OmniCache</RepositoryUrl>
+    
   </PropertyGroup>
 
   <ItemGroup>
