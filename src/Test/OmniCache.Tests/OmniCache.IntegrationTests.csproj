@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
+    <PackageReference Include="Shouldly" Version="4.2.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
+    <PackageReference Include="MySqlConnector" Version="2.2.6" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Model\" />
+    <None Remove="Core\" />
+    <None Remove="Seed\" />
+    <None Remove="Test\" />
+    <None Remove="Test\Get\" />
+    <None Remove="Test\Add\" />
+    <None Remove="Test\Update\" />
+    <None Remove="Test\Join\" />
+    <None Remove="Test\Contains\" />
+    <None Remove="Test\Load\" />
+    <None Remove="Test\OrderBy\" />
+    <None Remove="Test\Take\" />
+    <None Remove="Test\CompatTypes\" />
+    <None Remove="Test\NotEqual\" />
+    <None Remove="Test\GreaterThanLessThan\" />
+    <None Remove="Test\MultiCondition\" />
+    <None Remove="Test\GreaterThanEqualTo\" />
+    <None Remove="Test\LessThan\" />
+    <None Remove="migrations\" />
+    <None Remove="Test\Delete\" />
+    <None Remove="Test\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Core\" />
+    <Folder Include="Seed\" />
+    <Folder Include="Test\" />
+    <Folder Include="Test\Get\" />
+    <Folder Include="Test\Add\" />
+    <Folder Include="Test\Update\" />
+    <Folder Include="Test\Join\" />
+    <Folder Include="Test\Contains\" />
+    <Folder Include="Test\Load\" />
+    <Folder Include="Test\OrderBy\" />
+    <Folder Include="Test\Take\" />
+    <Folder Include="Test\CompatTypes\" />
+    <Folder Include="Test\NotEqual\" />
+    <Folder Include="Test\GreaterThanLessThan\" />
+    <Folder Include="Test\MultiCondition\" />
+    <Folder Include="Test\GreaterThanEqualTo\" />
+    <Folder Include="Test\LessThan\" />
+    <Folder Include="migrations\" />
+    <Folder Include="Test\Delete\" />
+    <Folder Include="Test\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OmniCache.EntityFramework\OmniCache.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\OmniCache\OmniCache.csproj" />
+  </ItemGroup>
+</Project>

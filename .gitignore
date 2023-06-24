@@ -1,0 +1,168 @@
+#Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnail cache files
+._*
+.Trashes
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# .NET Core
+project.lock.json
+.project.json.user
+.project.json-workspace
+
+# Build Results
+[Bb]in/
+[Oo]bj/
+
+# Files built by Visual Studio
+*.exe
+*.exe.config
+*.dll
+*.pdb
+*.cache
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# Azure DevOps pipeline cache files
+pipelineCache/*
+
+# StyleCop is a code style add-in
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*.dbmdl
+*.svclog
+*.asax.cs
+*.ascx.cs
+*.ashx.cs
+*.asmx.cs
+*.axd
+*.csproj.user
+*.datasource
+*.designer.cs
+*.generated.cs
+*.map
+*.Master.cs
+*.resx
+*.sitemap
+*.sln.E2E
+*.WebInfo
+*.xsd
+*.xss
+
+# Others
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Windows Store app package directories and files
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!?*.[Cc]ache/
+
+# Others
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Including a line below to ignore everything in /packages/ directory. 
+# However, if you're using NuGet Package Restore, 
+# the built DLLs will be added to your project and checked into source control.
+# It is also possible to install NuGet packages such that they're not part of the /packages/ directory, 
+# but are instead included directly in your project.
+# If either of those apply to you, comment out the line below.
+packages/
+
+# nCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# RIA/Silverlight projects
+Generated_Code/
+
+# Backup & report files from converting an old project file to a newer
+# Visual Studio version. Backup files are not needed, because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
+
+# Vue.js TypeScript TypeScript specific (also see node_modules section above)
+typings

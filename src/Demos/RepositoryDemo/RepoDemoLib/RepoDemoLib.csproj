@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Service\" />
+    <None Remove="Service\Contract\" />
+    <None Remove="Service\Impl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="Service\Contract\" />
+    <Folder Include="Service\Impl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CacherLib\CacherLib.Core.csproj" />
+    <ProjectReference Include="..\..\..\CacherLib.EntityFramework\CacherLib.EntityFramework.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniCache", "OmniCache\OmniCache.csproj", "{8946BE4F-1145-4C4D-B840-F48ADB0F5D25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3CDCB5E2-EBF6-491F-ABAD-C3AC48A41E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniCache.IntegrationTests", "Test\OmniCache.Tests\OmniCache.IntegrationTests.csproj", "{7F3C4443-CFB6-4212-B130-111BD195E57A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniCache.EntityFramework", "OmniCache.EntityFramework\OmniCache.EntityFramework.csproj", "{88383C08-7905-4521-B947-E5E1AB02D880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{978A8903-6856-4555-991E-6187E3153013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RepositoryDemo", "RepositoryDemo", "{3D082F2B-ACD7-41E7-97C8-4D93CABF8DB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MinimalistDemo", "MinimalistDemo", "{F1CB2E30-D43C-4DDB-9D62-883D73876603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoDemo.API", "Demos\RepositoryDemo\RepoDemoAPI\RepoDemo.API.csproj", "{00679100-BDA0-4BA8-8FC6-DE1F8582AFC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoDemo.Data", "Demos\RepositoryDemo\RepoDemoDAL\RepoDemo.Data.csproj", "{0EFDA22F-E0CB-4E73-A1FF-1ECCCC51575D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoDemo.Services", "Demos\RepositoryDemo\RepoDemo.Services\RepoDemo.Services.csproj", "{4D4F723C-83DD-4042-9F8C-CD9C0CAB3F24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalistDemo.API", "Demos\MinimalistDemo\MinimalistDemo.API\MinimalistDemo.API.csproj", "{6FA0DB27-7D3B-4072-8BE2-251C26A19A51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalistDemo.Data", "Demos\MinimalistDemo\MinimalistDemo.Data\MinimalistDemo.Data.csproj", "{38515484-DD5A-4C66-A1E5-836F67721D8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8946BE4F-1145-4C4D-B840-F48ADB0F5D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8946BE4F-1145-4C4D-B840-F48ADB0F5D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8946BE4F-1145-4C4D-B840-F48ADB0F5D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8946BE4F-1145-4C4D-B840-F48ADB0F5D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F3C4443-CFB6-4212-B130-111BD195E57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3C4443-CFB6-4212-B130-111BD195E57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3C4443-CFB6-4212-B130-111BD195E57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3C4443-CFB6-4212-B130-111BD195E57A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88383C08-7905-4521-B947-E5E1AB02D880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88383C08-7905-4521-B947-E5E1AB02D880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88383C08-7905-4521-B947-E5E1AB02D880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88383C08-7905-4521-B947-E5E1AB02D880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00679100-BDA0-4BA8-8FC6-DE1F8582AFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00679100-BDA0-4BA8-8FC6-DE1F8582AFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00679100-BDA0-4BA8-8FC6-DE1F8582AFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00679100-BDA0-4BA8-8FC6-DE1F8582AFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EFDA22F-E0CB-4E73-A1FF-1ECCCC51575D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EFDA22F-E0CB-4E73-A1FF-1ECCCC51575D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EFDA22F-E0CB-4E73-A1FF-1ECCCC51575D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EFDA22F-E0CB-4E73-A1FF-1ECCCC51575D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4F723C-83DD-4042-9F8C-CD9C0CAB3F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4F723C-83DD-4042-9F8C-CD9C0CAB3F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4F723C-83DD-4042-9F8C-CD9C0CAB3F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4F723C-83DD-4042-9F8C-CD9C0CAB3F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA0DB27-7D3B-4072-8BE2-251C26A19A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA0DB27-7D3B-4072-8BE2-251C26A19A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA0DB27-7D3B-4072-8BE2-251C26A19A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA0DB27-7D3B-4072-8BE2-251C26A19A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38515484-DD5A-4C66-A1E5-836F67721D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38515484-DD5A-4C66-A1E5-836F67721D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38515484-DD5A-4C66-A1E5-836F67721D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38515484-DD5A-4C66-A1E5-836F67721D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {742E599F-D02A-4714-8239-7D1A2AFD4F9F}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F3C4443-CFB6-4212-B130-111BD195E57A} = {3CDCB5E2-EBF6-491F-ABAD-C3AC48A41E8C}
+		{3D082F2B-ACD7-41E7-97C8-4D93CABF8DB7} = {978A8903-6856-4555-991E-6187E3153013}
+		{F1CB2E30-D43C-4DDB-9D62-883D73876603} = {978A8903-6856-4555-991E-6187E3153013}
+		{00679100-BDA0-4BA8-8FC6-DE1F8582AFC7} = {3D082F2B-ACD7-41E7-97C8-4D93CABF8DB7}
+		{0EFDA22F-E0CB-4E73-A1FF-1ECCCC51575D} = {3D082F2B-ACD7-41E7-97C8-4D93CABF8DB7}
+		{4D4F723C-83DD-4042-9F8C-CD9C0CAB3F24} = {3D082F2B-ACD7-41E7-97C8-4D93CABF8DB7}
+		{6FA0DB27-7D3B-4072-8BE2-251C26A19A51} = {F1CB2E30-D43C-4DDB-9D62-883D73876603}
+		{38515484-DD5A-4C66-A1E5-836F67721D8C} = {F1CB2E30-D43C-4DDB-9D62-883D73876603}
+	EndGlobalSection
+EndGlobal

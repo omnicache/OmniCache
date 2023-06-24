@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>OmniCache</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>Chun Lim</Authors>    
+    <Product>OmniCache</Product>
+    <Description>A caching library to cache everything</Description>    
+    <Copyright>Copyright © Chun Lim 2023</Copyright>
+    <PackageTags>Cache</PackageTags>    
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>    
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Utils\" />
+    <None Remove="Utils\QueryParam\" />
+    <None Remove="Extension\" />
+    <None Remove="QueryExpression\" />
+    <None Remove="QueryExpression\InputSetter\" />
+    <None Remove="QueryExpression\ParamSwapper\" />
+    <None Remove="QueryExpression\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
+    <Folder Include="Extension\" />
+    <Folder Include="QueryExpression\" />
+    <Folder Include="QueryExpression\InputSetter\" />
+    <Folder Include="QueryExpression\ParamSwapper\" />
+    <Folder Include="QueryExpression\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+  <None Include="README.md" Pack="true" PackagePath="/" />
+</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.Caching" Version="7.0.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.111" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+</Project>
