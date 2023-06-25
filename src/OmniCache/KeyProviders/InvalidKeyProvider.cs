@@ -96,14 +96,33 @@ namespace OmniCache.KeyProviders
 
         private bool ShouldInvalidateUnorderedList<T>(ReflectClass cls, Query<T> query, string paramKey, T before, T after) where T : class, new()
         {
+            if(before == null && after==null)   //Shouldn't happen
+            {
+                return false;           
+            }
+
             List<object> queryParams = GetQueryParamsFromKey(cls, query, paramKey);
 
             var compiledQuery = query.Generate(queryParams.ToArray()).Compile();
 
-            bool beforeOutput = compiledQuery.Invoke(before);
-            bool afterOutput = compiledQuery.Invoke(after);
+            bool invalidate = false;
 
-            bool invalidate = beforeOutput != afterOutput;
+            if(before != null && after!=null)
+            {
+                bool beforeOutput = compiledQuery.Invoke(before);
+                bool afterOutput = compiledQuery.Invoke(after);
+
+                invalidate = beforeOutput != afterOutput;
+            }
+            else if(before==null)       //insert
+            {
+                invalidate = compiledQuery.Invoke(after);       
+            }
+            else if(after==null)        //delete
+            {
+                invalidate = compiledQuery.Invoke(before);
+            }
+            
             return invalidate;
         }
 

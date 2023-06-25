@@ -242,7 +242,7 @@ namespace OmniCache.CacheProvider
 
                 await RemoveHashItemAsync<T>(key);                
             }
-            DebugLogger.Debug(DebugLogSource.Redis, "RemoveHashItems(List)", keys, "COUNT:" + keys.Count);
+            DebugLogger.Debug(DebugLogSource.LocalCache, "RemoveHashItems(List)", keys, "COUNT:" + keys.Count);
         }
 
         public async Task RemoveItemsAsync<T>(List<string> keys) where T : class

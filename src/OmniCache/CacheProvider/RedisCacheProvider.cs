@@ -78,7 +78,7 @@ namespace OmniCache.CacheProvider
 
             CacheItem<T> cacheObj = JsonUtils.FromJsonString<CacheItem<T>>(item);
 
-            DebugLogger.Debug(DebugLogSource.LocalCache, "GetHashAsync:" + hashName, hashKey, cacheObj);
+            DebugLogger.Debug(DebugLogSource.Redis, "GetHashAsync:" + hashName, hashKey, cacheObj);
 
             return cacheObj;
         }
