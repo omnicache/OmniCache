@@ -56,7 +56,7 @@ namespace OmniCache.IntegrationTests.Test.Update
             movies.Count.ShouldBe(2);
             movies[0].Id.ShouldBe(100);
             movies[1].Id.ShouldBe(101);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             List<Movie> movies2 = await cachedDB.GetMultipleAsync(query1, Category.Thriller, false);
@@ -70,14 +70,14 @@ namespace OmniCache.IntegrationTests.Test.Update
             movies3.Count.ShouldBe(1);
             
             movies3[0].Id.ShouldBe(100);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movie = await cachedDB.GetByKeyAsync<Movie>(100);
 
             movie.ShouldNotBeNull();
             movie.Name.ShouldBe("Jaws");                      
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("100") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movie.Name = "Terminator";
@@ -88,7 +88,7 @@ namespace OmniCache.IntegrationTests.Test.Update
 
             movie.ShouldNotBeNull();
             movie.Name.ShouldBe("Terminator");            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("100") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
     }

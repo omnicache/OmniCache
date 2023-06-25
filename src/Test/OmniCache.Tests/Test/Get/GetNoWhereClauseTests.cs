@@ -33,7 +33,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             stores[0].StoreCode.ShouldBe("STORE3");
             stores[1].StoreCode.ShouldBe("STORE1");
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
 
         }
 
@@ -41,7 +41,7 @@ namespace OmniCache.IntegrationTests.Test.Get
         public async Task InvalidateNullQueryParam()
         {
             List<RentalStore> stores = await cachedDB.GetMultipleAsync(query1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             RentalStore rental = new RentalStore
@@ -54,7 +54,7 @@ namespace OmniCache.IntegrationTests.Test.Get
 
             await cachedDB.AddAsync(rental);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveAsync(List)") && s.Contains("query1") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("RemoveAsync(List)") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
 

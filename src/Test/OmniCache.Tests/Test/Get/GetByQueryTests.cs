@@ -31,14 +31,14 @@ namespace OmniCache.IntegrationTests.Test.Get
             Movie movie = await cachedDB.GetAsync(query1, "Matrix");
             
             movie.ShouldNotBeNull();            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
 
             movie = await cachedDB.GetAsync(query1, "Matrix");
 
             movie.ShouldNotBeNull();            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
 

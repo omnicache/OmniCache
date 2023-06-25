@@ -31,7 +31,7 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             stores.ShouldNotBeNull();            
             stores.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             RentalStore store3 = await cachedDB.GetByKeyAsync<RentalStore>("STORE3");
@@ -44,7 +44,7 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             stores.ShouldNotBeNull();            
             stores.Count.ShouldBe(0);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -63,11 +63,11 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             stores2.ShouldNotBeNull();
             stores2.Count.ShouldBe(1);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query2") && s.Contains("NULL"));            
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));            
 
             stores3.ShouldNotBeNull();
             stores3.Count.ShouldBe(2);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query3") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             RentalStore toUpdate = stores2[0];
@@ -79,11 +79,11 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             stores2.ShouldNotBeNull();
             stores2.Count.ShouldBe(0);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query2") && s.Contains("NULL"));            
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));            
 
             stores3.ShouldNotBeNull();
             stores3.Count.ShouldBe(3);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query3") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -103,11 +103,11 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             stores4.ShouldNotBeNull();
             stores4.Count.ShouldBe(1);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query4") && s.Contains("NULL"));            
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetAsync") && s.Contains("NULL"));            
 
             stores5.ShouldNotBeNull();
             stores5.Count.ShouldBe(1);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query5") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query5") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             RentalStore toUpdate = stores4[0];
@@ -119,12 +119,12 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             stores4.ShouldNotBeNull();
             stores4.Count.ShouldBe(0);            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query4") && s.Contains("NULL"));            
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetAsync") && s.Contains("NULL"));            
 
             stores5.ShouldNotBeNull();
             stores5.Count.ShouldBe(1);            
             stores5[0].State.ShouldBe(State.VIC);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("query5") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query5") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
     }

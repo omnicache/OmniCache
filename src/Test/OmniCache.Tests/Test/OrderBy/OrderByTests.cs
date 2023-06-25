@@ -32,7 +32,7 @@ namespace OmniCache.IntegrationTests.Test.OrderBy
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(3);            
             bool isSortedDescending = movies.SequenceEqual(movies.OrderByDescending(obj => obj.Id));
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query1, 18);
@@ -53,7 +53,7 @@ namespace OmniCache.IntegrationTests.Test.OrderBy
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(3);            
             bool isSortedDescending = movies.SequenceEqual(movies.OrderBy(obj => obj.Id));
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query2, 18);
@@ -61,7 +61,7 @@ namespace OmniCache.IntegrationTests.Test.OrderBy
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(3);
             isSortedDescending = movies.SequenceEqual(movies.OrderBy(obj => obj.Id));
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
 

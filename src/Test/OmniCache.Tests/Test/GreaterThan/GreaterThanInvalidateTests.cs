@@ -31,14 +31,14 @@ namespace OmniCache.IntegrationTests.Test.GreaterThan
 
             stocks.ShouldNotBeNull();            
             stocks.Count.ShouldBe(4);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             List<StoreStock> stocks2 = await cachedDB.GetMultipleAsync(query1, 9);
 
             stocks2.ShouldNotBeNull();            
             stocks2.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock = stocks2.FirstOrDefault(s => s.Id == 3);
@@ -50,7 +50,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThan
             stocks2 = await cachedDB.GetMultipleAsync(query1, 9);
             stocks2.ShouldNotBeNull();            
             stocks2.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }

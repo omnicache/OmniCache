@@ -30,7 +30,7 @@ namespace OmniCache.IntegrationTests.Test.CompatTypes
             Movie movie = await cachedDB.GetAsync(query1, val);
 
             movie.ShouldNotBeNull();            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
 
@@ -45,7 +45,7 @@ namespace OmniCache.IntegrationTests.Test.CompatTypes
             Movie movie = await cachedDB.GetAsync(query2, val);
 
             movie.ShouldNotBeNull();            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
 

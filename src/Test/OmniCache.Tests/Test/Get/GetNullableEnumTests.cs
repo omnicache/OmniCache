@@ -28,7 +28,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             RentalStore store = await cachedDB.GetAsync(query1, null);
 
             store.ShouldNotBeNull();            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             
         }
 
@@ -41,7 +41,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             RentalStore store = await cachedDB.GetAsync(query2);
 
             store.ShouldNotBeNull();            
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));
             
         }
     }

@@ -35,7 +35,7 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
 
             stocks.Select(stock => stock.MovieId).ShouldBeSubsetOf(new long[] { 107, 104, 102, 101 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock = stocks.FirstOrDefault(s => s.MovieId == 104);
@@ -43,14 +43,14 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
             stock.CopiesInStore = 38;
             await cachedDB.UpdateAsync(stock);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveHashItem") && s.Contains("query1") && s.Contains("REMOVED"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("RemoveHashItem") && s.Contains("REMOVED"));
             DebugLogger.ClearLogData();
 
             stocks = await cachedDB.GetMultipleAsync(query1, 40, 800);
 
             stocks.ShouldNotBeNull();
             stocks.Count.ShouldBe(3);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -70,7 +70,7 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
 
             stocks.Select(stock => stock.MovieId).ShouldBeSubsetOf(new long[] { 107, 104, 102, 101 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock1 = await cachedDB.GetByKeyAsync<StoreStock>(1);  //CopiesInStore = 21            
@@ -80,14 +80,14 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
             stock1.CopiesInStore = 41;
             await cachedDB.UpdateAsync(stock1);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveHashItem") && s.Contains("query2") && s.Contains("REMOVED"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("RemoveHashItem") && s.Contains("REMOVED"));
             DebugLogger.ClearLogData();
 
             stocks = await cachedDB.GetMultipleAsync(query2, 40, 800);
 
             stocks.ShouldNotBeNull();
             stocks.Count.ShouldBe(5);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -108,7 +108,7 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
 
             stocks.Select(stock => stock.MovieId).ShouldBeSubsetOf(new long[] { 107, 104, 102, 101 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock1 = await cachedDB.GetByKeyAsync<StoreStock>(1);  //CopiesInStore = 21            
@@ -126,7 +126,7 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
 
             stocks.ShouldNotBeNull();
             stocks.Count.ShouldBe(4);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetHashAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -146,7 +146,7 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
 
             stocks.Select(stock => stock.MovieId).ShouldBeSubsetOf(new long[] { 107, 104, 101 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock1 = await cachedDB.GetByKeyAsync<StoreStock>(4);  //CopiesInStore = 53
@@ -163,7 +163,7 @@ namespace OmniCache.IntegrationTests.Test.MultiCondition
 
             stocks.ShouldNotBeNull();
             stocks.Count.ShouldBe(3);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetHashAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }

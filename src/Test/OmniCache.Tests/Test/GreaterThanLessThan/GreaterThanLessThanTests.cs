@@ -36,7 +36,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
 
             stocks.Select(stock => stock.CopiesInStore).ShouldBeSubsetOf(new int?[] { 21, 41, 53, 79, 92, 94 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -56,7 +56,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
 
             stocks.Select(stock => stock.CopiesInStore).ShouldBeSubsetOf(new int?[] { 21, 41, 53, 79, 92, 94 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock = stocks.FirstOrDefault(s => s.CopiesInStore == 41);
@@ -64,7 +64,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
             stock.CopiesInStore = 3;          
             await cachedDB.UpdateAsync(stock);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveHashItem") && s.Contains("query2") && s.Contains("REMOVED"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("RemoveHashItem") && s.Contains("REMOVED"));
             DebugLogger.ClearLogData();
 
         }
@@ -84,7 +84,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
 
             stocks.Select(stock => stock.CopiesInStore).ShouldBeSubsetOf(new int?[] { 21, 41, 53, 79, 92, 94 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock1 = await cachedDB.GetByKeyAsync<StoreStock>(7);
@@ -92,7 +92,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
             stock1.CopiesInStore = 11;
             await cachedDB.UpdateAsync(stock1);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveHashItem") && s.Contains("query3") && s.Contains("REMOVED"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("RemoveHashItem") && s.Contains("REMOVED"));
             DebugLogger.ClearLogData();
 
         }
@@ -112,7 +112,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
 
             stocks.Select(stock => stock.CopiesInStore).ShouldBeSubsetOf(new int?[] { 21, 41, 53, 79, 92, 94 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock1 = await cachedDB.GetByKeyAsync<StoreStock>(2);
@@ -120,7 +120,7 @@ namespace OmniCache.IntegrationTests.Test.GreaterThanLessThan
             stock1.CopiesInStore = 93;
             await cachedDB.UpdateAsync(stock1);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveHashItem") && s.Contains("query4") && s.Contains("REMOVED"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("RemoveHashItem") && s.Contains("REMOVED"));
             DebugLogger.ClearLogData();
 
         }

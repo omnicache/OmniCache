@@ -34,7 +34,7 @@ namespace OmniCache.IntegrationTests.Test.Delete
             movies.Count.ShouldBe(2);
             movies[0].Id.ShouldBe(100);
             movies[1].Id.ShouldBe(101);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
             
             Movie movie = movies[1];            
@@ -44,7 +44,7 @@ namespace OmniCache.IntegrationTests.Test.Delete
             movies3.Count.ShouldBe(1);
 
             movies3[0].Id.ShouldBe(100);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }

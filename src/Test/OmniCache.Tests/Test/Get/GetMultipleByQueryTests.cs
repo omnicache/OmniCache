@@ -34,7 +34,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             movies.ShouldNotBeNull();
             
             movies.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
 
@@ -43,7 +43,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             movies.ShouldNotBeNull();
             ;
             movies.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && !s.Contains("NULL"));
         }
 
         public static Query<Movie> query2 = new Query<Movie>(
@@ -58,7 +58,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             
             movies.Count.ShouldBe(2);
             movies.ShouldAllBe(movie => movie.Category == Category.Thriller);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query2, Category.Thriller);
@@ -66,7 +66,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             ;
             movies.Count.ShouldBe(2);
             movies.ShouldAllBe(movie => movie.Category == Category.Thriller);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && !s.Contains("NULL"));
 
         }
 
@@ -81,7 +81,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
             movies.ShouldAllBe(movie => movie.Category == Category.Thriller);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query3, (int)Category.Thriller);
@@ -89,7 +89,7 @@ namespace OmniCache.IntegrationTests.Test.Get
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
             movies.ShouldAllBe(movie => movie.Category == Category.Thriller);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
     }

@@ -35,14 +35,14 @@ namespace OmniCache.IntegrationTests.Test.GreaterThan
             
             stocks.Select(stock => stock.CopiesInStore).ShouldBeSubsetOf(new int?[] { 94, 92, 79, 53 });
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             StoreStock stock1 = stocks.FirstOrDefault(s => s.CopiesInStore == 92);
             stock1.CopiesInStore = 20;
             await cachedDB.UpdateAsync(stock1);
 
-            DebugLogger.Log.ShouldContain(s => s.Contains("RemoveHashItem") && s.Contains("query1") && s.Contains("REMOVED"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("RemoveHashItem") && s.Contains("query1") && s.Contains("REMOVED"));
             DebugLogger.ClearLogData();
         }
     }

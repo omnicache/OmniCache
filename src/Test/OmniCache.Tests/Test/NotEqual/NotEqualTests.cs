@@ -30,7 +30,7 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             store.ShouldNotBeNull();            
             store.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
 
@@ -50,7 +50,7 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             store.ShouldNotBeNull();            
             store.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             store = await cachedDB.GetMultipleAsync(query2, null);
@@ -70,7 +70,7 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             store.ShouldNotBeNull();            
             store.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query3") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             store = await cachedDB.GetMultipleAsync(query3);
@@ -89,14 +89,14 @@ namespace OmniCache.IntegrationTests.Test.NotEqual
 
             store.ShouldNotBeNull();            
             store.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             store = await cachedDB.GetMultipleAsync(query4);
 
             store.ShouldNotBeNull();            
             store.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query4") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
     }

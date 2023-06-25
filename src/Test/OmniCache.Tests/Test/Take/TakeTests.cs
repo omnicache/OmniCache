@@ -33,14 +33,14 @@ namespace OmniCache.IntegrationTests.Test.Take
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);            
             bool isSortedDescending = movies.SequenceEqual(movies.OrderByDescending(obj => obj.Id));
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query1, 18);
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
             isSortedDescending = movies.SequenceEqual(movies.OrderByDescending(obj => obj.Id));
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
 

@@ -30,14 +30,14 @@ namespace OmniCache.IntegrationTests.Test.GreaterThan
 
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query1, 100);
 
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query1") && s.Contains("GetHashAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
         }
@@ -52,28 +52,28 @@ namespace OmniCache.IntegrationTests.Test.GreaterThan
 
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             List<Movie> movies2 = await cachedDB.GetMultipleAsync(query2, 101);
 
             movies2.ShouldNotBeNull();            
             movies2.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies = await cachedDB.GetMultipleAsync(query2, 100);
 
             movies.ShouldNotBeNull();            
             movies.Count.ShouldBe(2);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
 
             movies2 = await cachedDB.GetMultipleAsync(query2, 101);
 
             movies2.ShouldNotBeNull();            
             movies2.Count.ShouldBe(1);
-            DebugLogger.Log.ShouldContain(s => s.Contains("GetHashAsync") && !s.Contains("NULL"));
+            DebugLogger.Log.ShouldContain(s => s.Contains("query2") && s.Contains("GetHashAsync") && !s.Contains("NULL"));
             DebugLogger.ClearLogData();
         }
     }
