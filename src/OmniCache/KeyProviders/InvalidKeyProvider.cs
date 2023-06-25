@@ -7,6 +7,7 @@ using OmniCache.QueryExpression;
 using OmniCache.QueryExpression.Utils;
 using OmniCache.Reflect;
 using OmniCache.Utils;
+using static StackExchange.Redis.Role;
 
 namespace OmniCache.KeyProviders
 {
@@ -81,7 +82,7 @@ namespace OmniCache.KeyProviders
                     }
                     else
                     {
-                        invalidate = await ShouldInvalidateOrderedListAsync(cls, query, paramKey, fullKey, after);
+                        invalidate = await ShouldInvalidateOrderedListAsync(cls, query, paramKey, fullKey, before, after);
                     }
 
                     if (invalidate)
@@ -126,9 +127,40 @@ namespace OmniCache.KeyProviders
             return invalidate;
         }
 
-        private async Task<bool> ShouldInvalidateOrderedListAsync<T>(ReflectClass cls, Query<T> query, string paramKey, string fullKey, T afterObject) where T : class, new()
+        private async Task<bool> ShouldInvalidateOrderedListAsync<T>(ReflectClass cls, Query<T> query, string paramKey, string fullKey, T before, T after) where T : class, new()
         {
             if(query._OrderBy ==null)       //don't need take
+            {
+                return false;
+            }
+
+            if (before == null && after == null)   //Shouldn't happen
+            {
+                return false;
+            }
+
+            List<object> queryParams = GetQueryParamsFromKey(cls, query, paramKey);
+
+            var compiledQuery = query.Generate(queryParams.ToArray()).Compile();
+            bool invalidate = false;
+
+            if (before != null && after != null)
+            {
+                bool beforeOutput = compiledQuery.Invoke(before);
+                bool afterOutput = compiledQuery.Invoke(after);
+
+                invalidate = beforeOutput || afterOutput;
+            }
+            else if (before == null)       //insert
+            {
+                invalidate = compiledQuery.Invoke(after);
+            }
+            else if (after == null)        //delete
+            {
+                invalidate = compiledQuery.Invoke(before);
+            }
+
+            if(!invalidate)         //if data doesn't belong in query before or after, then no need to invalidate
             {
                 return false;
             }
@@ -160,15 +192,13 @@ namespace OmniCache.KeyProviders
             }
 
             List<T> afterList = new List<T>(beforeList);
-            bool listContainsObject = ReflectionUtils.ListContainsObject(beforeList, afterObject);
+            bool listContainsObject = ReflectionUtils.ListContainsObject(beforeList, after);
             if(!listContainsObject)
             {
-                afterList.Add(afterObject);
+                afterList.Add(after);
             }
-
-            List<object> queryParams = GetQueryParamsFromKey(cls, query, paramKey);
-            var whereFunc = query.Generate(queryParams.ToArray()).Compile();
-            afterList = afterList.Where(whereFunc).ToList();
+            
+            afterList = afterList.Where(compiledQuery).ToList();
             
             var orderByFunc = query._OrderBy.Compile();
             if (query._OrderByDesc)
