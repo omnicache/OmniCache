@@ -11,7 +11,7 @@ namespace OmniCache.IntegrationTests.Core
 {
 	public class ApplicationDbContext : DbContext
     {
-        private bool _UseInMemoryDatabase = false;
+        private bool _UseInMemoryDatabase = true;
 
         public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
                                                         {

@@ -25,7 +25,7 @@ namespace OmniCache.IntegrationTests.Core
         protected ITestOutputHelper _output;
         protected ApplicationDbContext dbContext;
 
-        public const bool USE_MEMORY_DATABASE = false;
+        public const bool USE_MEMORY_DATABASE = true;
 
         public BaseTest(ITestOutputHelper output)
 		{
