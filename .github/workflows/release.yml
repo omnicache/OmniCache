@@ -36,12 +36,12 @@ jobs:
     - name: Pack OmniCache
       run: |
         dotnet build src/OmniCache/OmniCache.csproj -c Release -p:Version=${{ steps.get_version.outputs.VERSION }}
-        dotnet pack src/OmniCache/OmniCache.csproj -c Release --no-build -o out /p:Version=${{ steps.get_version.outputs.VERSION }}
+        dotnet pack src/OmniCache/OmniCache.csproj -c Release --no-build -o nupkgs /p:Version=${{ steps.get_version.outputs.VERSION }}
 
     - name: Pack OmniCache.EntityFramework
       run: |
         dotnet build src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj -c Release -p:Version=${{ steps.get_version.outputs.VERSION }}
-        dotnet pack src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj -c Release --no-build -o out /p:Version=${{ steps.get_version.outputs.VERSION }}
+        dotnet pack src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj -c Release --no-build -o nupkgs /p:Version=${{ steps.get_version.outputs.VERSION }}
 
     - name: Push to NuGet
       run: dotnet nuget push "nupkgs/*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
