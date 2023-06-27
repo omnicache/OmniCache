@@ -20,6 +20,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/OmniCache.sln
 
+    - name: Show directory structure
+      run: ls -R
+
     - name: Build
       run: dotnet build --no-restore
 
