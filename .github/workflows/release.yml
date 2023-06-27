@@ -1,0 +1,41 @@
+name: Publish to NuGet
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
+    - name: Publish OmniCache
+      run: dotnet pack --no-build --configuration Release --output nupkgs /OmniCache/src/OmniCache/OmniCache.csproj
+    - name: Publish OmniCache.EntityFramework
+      run: dotnet pack --no-build --configuration Release --output nupkgs /OmniCache/src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj
+
+    - name: Push to NuGet
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: nupkgs/*.nupkg
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        TAG_COMMIT: true
+        VERSION_REGEX: 'Version\s*(.*?)\s*'
+        VERSION_STATIC: '1.0.0'
