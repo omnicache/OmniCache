@@ -5,8 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>OmniCache</PackageId>
-    <Version>1.0.3</Version>
+    <PackageId>OmniCache</PackageId>    
     <Authors>Chun Lim</Authors>    
     <Product>OmniCache</Product>
     <Description>A caching library to cache everything</Description>    
