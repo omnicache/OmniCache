@@ -17,11 +17,11 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore src/OmniCache.sln
-
     - name: Show directory structure
       run: ls -R
+
+    - name: Restore dependencies
+      run: dotnet restore src/OmniCache.sln
 
     - name: Build
       run: dotnet build --no-restore
