@@ -36,8 +36,8 @@ jobs:
 
     - name: Pack OmniCache.EntityFramework
       run: |
-        dotnet build src/OmniCache/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj --configuration Release
-        dotnet pack src/OmniCache/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj --configuration Release --output nupkgs
+        dotnet build src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj --configuration Release
+        dotnet pack src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj --configuration Release --output nupkgs
 
     - name: Push to NuGet
       uses: rohith/publish-nuget@v2
