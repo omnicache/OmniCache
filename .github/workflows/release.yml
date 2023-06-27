@@ -27,7 +27,7 @@ jobs:
       run: dotnet build src/OmniCache.sln --no-restore
 
     - name: Test
-      rrun: dotnet test src/OmniCache.sln --no-restore --verbosity normal
+      run: dotnet test src/OmniCache.sln --no-restore --verbosity normal
 
     - name: Publish OmniCache
       run: dotnet pack --no-build --configuration Release --output nupkgs /src/OmniCache/OmniCache.csproj
