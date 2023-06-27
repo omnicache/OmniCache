@@ -40,10 +40,5 @@ jobs:
         dotnet pack src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj --configuration Release --output nupkgs
 
     - name: Push to NuGet
-      uses: rohith/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: nupkgs/*.nupkg
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        TAG_COMMIT: true
-        VERSION_REGEX: 'Version\s*(.*?)\s*'
-        VERSION_STATIC: '1.0.0'
+      run: dotnet nuget push "nupkgs/*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      
