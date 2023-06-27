@@ -18,9 +18,9 @@ jobs:
         dotnet-version: '6.0.x'
 
     - name: Restore dependencies for OmniCache
-      run: dotnet restore /OmniCache/src/OmniCache/OmniCache.csproj
+      run: dotnet restore /src/OmniCache/OmniCache.csproj
     - name: Restore dependencies for OmniCache.EntityFramework
-      run: dotnet restore /OmniCache/src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj
+      run: dotnet restore /src/OmniCache.EntityFramework/OmniCache.EntityFramework.csproj
 
     - name: Build
       run: dotnet build --no-restore
