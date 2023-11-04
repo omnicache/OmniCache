@@ -8,6 +8,7 @@ using OmniCache.CacheProvider;
 using OmniCache.Reflect;
 using OmniCache.Utils;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 
 namespace OmniCache.EntityFramework
 {
@@ -20,7 +21,8 @@ namespace OmniCache.EntityFramework
         {
 
             DbContext = dbContext;
-
+            DbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            
         }
 
         public static void SetConfig<T>(T config) where T : class
@@ -62,8 +64,8 @@ namespace OmniCache.EntityFramework
             }
 
             key = ReflectionUtils.ConvertKeyFieldType<T>(key);
-
-            T val = await DbContext.Set<T>().FindAsync(key);
+            
+            T val = await DbContext.Set<T>().FindAsync(key);            
 
             if (addToCache)
             {
@@ -101,7 +103,8 @@ namespace OmniCache.EntityFramework
 
             T val = null;
             List<T> list = await GenerateDBQuerable(query, queryParams).ToListAsync();
-            if(list.Count > 1)
+
+            if (list.Count > 1)
             {
                 throw new Exception($"Only expecing on item for query {query._QueryName}, but got {list.Count}. Params:{(queryParams==null?"":string.Join(",", queryParams))}");
             }
@@ -141,28 +144,33 @@ namespace OmniCache.EntityFramework
         public async Task AddAsync<T>(T obj, bool saveChanges = true) where T : class, new()
         {
             await DbContext.Set<T>().AddAsync(obj);
+            
             await cacheStore.UpdateAsync(null, obj);
 
             if (saveChanges)
             {
                 await DbContext.SaveChangesAsync();
             }
+
+            DbContext.Entry(obj).State = EntityState.Detached;
         }
 
         public async Task UpdateAsync<T>(T obj, bool saveChanges = true) where T : class, new()
         {
             object key = cacheStore.GetKeyFromObject<T>(obj);
 
-            T previous = await GetByKeyAsync<T>(key, false);
+            T previous = await GetByKeyAsync<T>(key, false);            
 
             DbContext.Set<T>().Update(obj);
-
+            
             await cacheStore.UpdateAsync(previous, obj);
 
             if (saveChanges)
             {
-                await DbContext.SaveChangesAsync();
+                await DbContext.SaveChangesAsync();             
             }
+
+            DbContext.Entry(obj).State = EntityState.Detached;
         }
 
 
