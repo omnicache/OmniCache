@@ -9,7 +9,7 @@ namespace OmniCache.CacheProvider
 	public class LocalCacheProvider: ICacheProvider
     {
         public const string CACHENAME = "DataStore";
-        private MemoryCache cache = new MemoryCache(CACHENAME);        
+        private static MemoryCache cache = new MemoryCache(CACHENAME);        
 
         public LocalCacheProvider()
 		{

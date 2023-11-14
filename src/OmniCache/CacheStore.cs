@@ -65,6 +65,11 @@ namespace OmniCache
 
         public object GetKeyFromObject<T>(object obj) where T : class, new()
         {
+            if(!CacheOn)
+            {
+                return null;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -76,6 +81,11 @@ namespace OmniCache
 
         public async Task<CacheItem<T>> GetByKeyAsync<T>(object key) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return null;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -90,6 +100,11 @@ namespace OmniCache
 
         public async Task<CacheItem<T>> GetAsync<T>(Query<T> query, params object[] queryParams) where T : class
         {
+            if (!CacheOn)
+            {
+                return null;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -116,6 +131,11 @@ namespace OmniCache
 
         public async Task<CacheItem<List<T>>> GetMultipleAsync<T>(Query<T> query, object[] queryParams) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return null;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -155,6 +175,11 @@ namespace OmniCache
 
         public async Task SetAsync<T>(T obj) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -168,6 +193,11 @@ namespace OmniCache
 
         public async Task SetAsync<T>(Query<T> query, object[] queryParams, T obj) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -191,6 +221,11 @@ namespace OmniCache
 
         public async Task SetMultipleAsync<T>(Query<T> query, object[] queryParams, List<T> objs) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -214,6 +249,11 @@ namespace OmniCache
 
         public async Task UpdateAsync<T>(T previousObj, T obj) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
@@ -234,6 +274,11 @@ namespace OmniCache
 
         public async Task RemoveAsync<T>(T obj) where T : class, new()
         {
+            if (!CacheOn)
+            {
+                return;
+            }
+
             ReflectClass? cls = ReflectStorage.GetClass(typeof(T));
             if (cls == null)
             {
