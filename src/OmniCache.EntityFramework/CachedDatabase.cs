@@ -96,7 +96,7 @@ namespace OmniCache.EntityFramework
             if (query._Take == 1)
             {
                 List<T> takeList = await GetMultipleAsync<T>(query, queryParams);
-                if(takeList==null)
+                if(takeList==null || takeList.Count==0)
                 {
                     return null;
                 }
