@@ -9,6 +9,7 @@ using OmniCache.Reflect;
 using OmniCache.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
+using System.Collections.Generic;
 
 namespace OmniCache.EntityFramework
 {
@@ -91,6 +92,21 @@ namespace OmniCache.EntityFramework
 
         public async Task<T> GetAsync<T>(Query<T> query, params object[] queryParams) where T : class, new()
         {
+
+            if (query._Take == 1)
+            {
+                List<T> takeList = await GetMultipleAsync<T>(query, queryParams);
+                if(takeList==null)
+                {
+                    return null;
+                }
+                return takeList[0];
+            }
+            else if(query._Take > 1)
+            {
+                throw new Exception("Use GetMultipleAsync for Take greater than 1");
+            }
+
             queryParams = fixQueryParams(queryParams);
 
 
