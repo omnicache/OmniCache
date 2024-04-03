@@ -148,7 +148,7 @@ namespace OmniCache.QueryExpression.ParamSwapper
                 }
                 else
                 {
-                    (string className, propertyName) = ParamSwapperUtils.GetClassAndPropertyName(_QueryName, argument);
+                    (Type classType, propertyName) = ParamSwapperUtils.GetClassAndPropertyName(_QueryName, argument);
                     
                 }
                 

@@ -20,7 +20,7 @@
     "RepoDemo.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:33707",
+      "applicationUrl": "http://localhost:49338",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -7,7 +7,7 @@ namespace OmniCache.QueryExpression.Utils
 	public class ParamSwapperUtils
 	{
 
-        private static string GetClassNameFromExpression(Expression otherExpression)
+        private static Type GetClassNameFromExpression(Expression otherExpression)
         {
             object toCheck = otherExpression;
 
@@ -28,10 +28,10 @@ namespace OmniCache.QueryExpression.Utils
             {
                 return null;
             }
-            return declaringType.Name;
+            return declaringType;
         }
 
-        public static (string, string) GetClassAndPropertyName(string queryName, Expression otherExpression)
+        public static (Type, string) GetClassAndPropertyName(string queryName, Expression otherExpression)
         {
             var newExp = ExpressionUtils.RemoveConvertsFromParam(otherExpression);
             if (newExp != otherExpression)
@@ -41,8 +41,8 @@ namespace OmniCache.QueryExpression.Utils
             }
 
           
-            String className = GetClassNameFromExpression(otherExpression);
-            if (className == null)
+            Type classType = GetClassNameFromExpression(otherExpression);
+            if (classType == null)
             {
                 throw new Exception($"Query {queryName} Expression type hasn't been implemented: {otherExpression.ToString()}");
             }
@@ -58,7 +58,7 @@ namespace OmniCache.QueryExpression.Utils
                         throw new Exception($"Query {queryName} - Could not unwrap query condition :{otherExpression.ToString()}");
 
                     }
-                    return (className, parts[1]);
+                    return (classType, parts[1]);
                 }
             }
 

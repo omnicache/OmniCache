@@ -62,13 +62,13 @@ namespace OmniCache.QueryExpression.ParamSwapper
         {
             Type classType = typeof(T);
 
-            (string className, string propertyName) = ParamSwapperUtils.GetClassAndPropertyName(_QueryName, otherExpression);
+            (Type propertyClassType, string propertyName) = ParamSwapperUtils.GetClassAndPropertyName(_QueryName, otherExpression);
 
-            if (className == classType.Name)
+            if (propertyClassType.IsAssignableFrom(classType))
             {
                 return;
             }
-
+            
             throw new Exception($"Query {_QueryName} QueryParam must be against object property. Eg. book => book.name == new QueryParam(1)");
         }
 
@@ -77,11 +77,11 @@ namespace OmniCache.QueryExpression.ParamSwapper
             NewExpression nexp = (NewExpression)exp;
             int paramNo = QueryParamNodeUtils.GetNodeQueryParamNo<T>(_QueryName, nexp);
 
-            (string className, string propertyName) = ParamSwapperUtils.GetClassAndPropertyName(_QueryName, otherExpression);
+            (Type propertyClassType, string propertyName) = ParamSwapperUtils.GetClassAndPropertyName(_QueryName, otherExpression);
             if (propertyName == null)
             {
                 Type classType = typeof(T);
-                throw new Exception($"Query {_QueryName} QueryParam must be against object property. Eg. book => book.name == new QueryParam(1)");
+                throw new Exception($"Query {_QueryName} QueryParam must be against object property. Eg. book => book.name == new QueryParam(1).");
             }
 
             ParamList.Add(new QueryParamDetail() { ParamNo = paramNo, PropertyName = propertyName, ParamType = QueryParamDetailType.Comparison });
